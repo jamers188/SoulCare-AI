@@ -361,7 +361,7 @@ def main():
 <body>
     <div class="container">
         <h1>Contact Form</h1>
-        <form action="https://formsubmit.co/skavtech.in@gmail.com" method="POST">
+        <form action="https://formsubmit.co/soulcare.sandeep@gmail.com" method="POST">
             <input type="hidden" name="_captcha" value="false">
             <input type="text" name="name" placeholder="Your name" required>
             <input type="email" name="email" placeholder="Your email" required>
