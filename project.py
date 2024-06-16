@@ -11,7 +11,7 @@ import re
 import pandas as pd
 
 # Set up the Generative AI configuration with a placeholder API key
-configure(api_key="AIzaSyBOc7WOykXVHvnU-GsMgCYZwoBqFERjQFI")
+configure(api_key=st.secrets["api_key"])
 
 # Create a Generative Model instance (assuming 'gemini-pro' is a valid model)
 model = GenerativeModel('gemini-pro')
@@ -55,7 +55,7 @@ def extract_topic(prompt):
 
 # Function to fetch YouTube videos
 def fetch_youtube_videos(query):
-    api_key = "AIzaSyCOXa8bs3l-4vYV68EmzLaxpz0p40PCUjc"
+    api_key = st.secrets["youtube_api_key"]
     search_url = "https://www.googleapis.com/youtube/v3/search"
     params = {
         "part": "snippet",
