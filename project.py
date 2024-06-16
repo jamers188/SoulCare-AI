@@ -10,6 +10,7 @@ import fitz  # PyMuPDF
 import re
 import pandas as pd
 
+
 # Set up the Generative AI configuration with a placeholder API key
 configure(api_key=st.secrets["api_key"])
 
@@ -82,49 +83,73 @@ def fetch_youtube_videos(query):
     return video_details
 
 
-# Main application
 def main():
-    st.set_page_config(page_title="SoulCare App", page_icon="❤️", layout="wide",
+    st.set_page_config(page_title="SoulCare AI APP", page_icon="❤️", layout="wide",
                        initial_sidebar_state="expanded")
 
     st.sidebar.image("soul.png", use_column_width=True)
+    # Custom Follow Me buttons with adjustable width and clickable links using Streamlit's st.sidebar.markdown()
     page = st.sidebar.selectbox("**MENU**",
-                                ["🏠 Home", "Mental Health Instructor ➕", "Report Analyzer ⚡", "Know Your Medicine 🌐",
-                                 "Contact Experts", "Privacy Policy"])
+                                ["🏠 Home", "🧠 Wellness Coach", "📝 Medical Report Analysis", "💊 Drug Details",
+                                 "🧑‍⚕️ Expert Advice", "⚖️ Privacy Policy"])
+    st.sidebar.markdown(""" Follow me on:
+    <style>
+    .follow-me {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 20px;
+    }
+    .follow-me img {
+        width: 40px;
+        height: auto;
+        border-radius: 5px;
+        margin-right: 25px; /* Adjust this value for spacing */
+    }
+    </style>
+
+    <div class="follow-me">
+        <a href="https://github.com/sandeepkasturi" target="_blank">
+            <img src="https://imgs.search.brave.com/J98scS-zV9tuiqZTsNtHuZRskbrcZFOkVCzZeNH2CJI/rs:fit:500:0:0/g:ce/aHR0cHM6Ly91cGxv/YWQud2lraW1lZGlh/Lm9yZy93aWtpcGVk/aWEvY29tbW9ucy90/aHVtYi8yLzI5L0dp/dEh1Yl9sb2dvXzIw/MTMuc3ZnLzIyMHB4/LUdpdEh1Yl9sb2dv/XzIwMTMuc3ZnLnBu/Zw" alt="GitHub">
+        </a>
+        <a href="https://www.instagram.com/sandeep_kasturi_" target="_blank">
+            <img src="https://imgs.search.brave.com/iDxNo9u4vGUacdSB5VVCvgGmGkmPVpHOK5q1gvszsQs/rs:fit:500:0:0/g:ce/aHR0cHM6Ly91cGxv/YWQud2lraW1lZGlh/Lm9yZy93aWtpcGVk/aWEvY29tbW9ucy90/aHVtYi85Lzk1L0lu/c3RhZ3JhbV9sb2dv/XzIwMjIuc3ZnLzIy/MHB4LUluc3RhZ3Jh/bV9sb2dvXzIwMjIu/c3ZnLnBuZw" alt="Instagram">
+        </a>
+        <a href="https://twitter.com/@Sandeepkasturi9" target="_blank">
+            <img src="https://imgs.search.brave.com/LXvqCdGG_3hdMxsJQbeCtZcCseEiPVOSkVdwnsV6WJo/rs:fit:500:0:0/g:ce/aHR0cHM6Ly91cGxv/YWQud2lraW1lZGlh/Lm9yZy93aWtpcGVk/aWEvY29tbW9ucy90/aHVtYi9jL2NlL1hf/bG9nb18yMDIzLnN2/Zy8yMjBweC1YX2xv/Z29fMjAyMy5zdmcu/cG5n" alt="Twitter">
+        </a>
+    </div>
+    """, unsafe_allow_html=True)
 
     if page == "🏠 Home":
-        st.title("Welcome to SoulCare AI ➕")
+        st.title("Welcome to SoulCare AI 🧑‍⚕️")
         st.markdown("""
         **SoulCare AI**:
-        SoulCare, powered by the Gemini API, is a basic chatbot designed for Mental Health Care. 
-        Project: SoulCare
-
-**Guidelines:**
-
-Respectful Conduct: Users are expected to engage in respectful and considerate interactions within the SoulCare community. Any form of harassment, hate speech, or derogatory behavior will not be tolerated.
-
-Accuracy of Information: While SoulCare aims to provide helpful information and support, users should understand that the content provided is for educational purposes only. It is not a substitute for professional medical advice, diagnosis, or treatment. Always consult with a qualified healthcare provider for personalized guidance.
-
-Data Privacy: SoulCare respects user privacy and confidentiality. Personal information shared within the platform will be handled with the utmost care and will not be shared with third parties without explicit consent, except as required by law.
-
-Community Support: SoulCare encourages users to support each other in a positive and constructive manner. Users are welcome to share their experiences, insights, and advice, but should refrain from giving medical diagnoses or prescribing treatments.
-
-Feedback and Suggestions: We value user feedback and suggestions for improving SoulCare. Users are encouraged to provide feedback on their experience with the platform and suggest features or content that would enhance their user experience.
-
-Safety and Well-being: SoulCare prioritizes the safety and well-being of its users. If you or someone you know is in crisis or experiencing a medical emergency, please seek immediate assistance from a qualified healthcare professional or emergency services.**
-
-        Developed by SKAV TECH, a company focused on creating practical AI projects, SoulCare is intended for educational purposes only. We do not endorse any illegal or unethical activities.
+        SoulCare, powered by the Gemini API, is a basic application designed for Mental Health Care. 
         """)
 
         # Embedding Lottie animation
-        st.markdown("""
-        <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
-        <lottie-player src="https://lottie.host/ee1e5978-9014-47cb-8031-45874d2dc909/tXASIvRMrN.json" background="#FFFFFF" speed="1" style="width: 300px; height: 300px" loop controls autoplay direction="1" mode="normal"></lottie-player>
-        """, unsafe_allow_html=True)
+        lottie_url = "https://lottie.host/d7233830-b2c0-4719-a5c0-0389bd2ab539/qHF7qyXl5q.json"
+        lottie_animation = load_lottie_url(lottie_url)
+        if lottie_animation:
+            st_lottie(lottie_animation, speed=1, width=400, height=300, key="lottie_animation")
+        else:
+            st.error("Failed to load Lottie animation.")
 
-    elif page == "Mental Health Instructor ➕":
-        #st.image("soul.png")
-        st.header("Mental Health Instructor ➕")
+        st.markdown("""
+        **Guidelines:**
+
+        - **Respectful Conduct**: Users are expected to engage in respectful and considerate interactions within the SoulCare community. Any form of harassment, hate speech, or derogatory behavior will not be tolerated.
+        - **Accuracy of Information**: While SoulCare aims to provide helpful information and support, users should understand that the content provided is for educational purposes only. It is not a substitute for professional medical advice, diagnosis, or treatment. Always consult with a qualified healthcare provider for personalized guidance.
+        - **Data Privacy**: SoulCare respects user privacy and confidentiality. Personal information shared within the platform will be handled with the utmost care and will not be shared with third parties without explicit consent, except as required by law.
+        - **Community Support**: SoulCare encourages users to support each other in a positive and constructive manner. Users are welcome to share their experiences, insights, and advice, but should refrain from giving medical diagnoses or prescribing treatments.
+        - **Feedback and Suggestions**: We value user feedback and suggestions for improving SoulCare. Users are encouraged to provide feedback on their experience with the platform and suggest features or content that would enhance their user experience.
+        - **Safety and Well-being**: SoulCare prioritizes the safety and well-being of its users. If you or someone you know is in crisis or experiencing a medical emergency, please seek immediate assistance from a qualified healthcare professional or emergency services.
+
+        Developed by SKAV TECH, a company focused on creating practical AI projects, SoulCare is intended for educational purposes only. We do not endorse any illegal or unethical activities.
+        """)
+    elif page == "🧠 Wellness Coach":
+        st.header("🧠 Wellness Coach")
 
         lottie_url = "https://lottie.host/0c079fc2-f4df-452a-966b-3a852ffb9801/WjOxpGVduu.json"
         # Load and display Lottie animation
@@ -166,16 +191,13 @@ Safety and Well-being: SoulCare prioritizes the safety and well-being of its use
 
                     else:
                         st.error("No valid response received from the AI model.")
-                        st.write(f"Safety ratings: {response.safety_ratings}"
-                                 f"Change the prompt to continue")
+                        st.write(f"Safety ratings: {response.safety_ratings}. Change the prompt to continue.")
                 except ValueError as e:
-                    st.info(f"🤐 Unable to assist with that prompt due to: {e}"
-                            f"Change the prompt to continue")
+                    st.info(f"🤐 Unable to assist with that prompt due to: {e}. Change the prompt to continue.")
                 except IndexError as e:
-                    st.info(f"🤐 Unable to assist with that prompt due to: {e}"
-                            f"Change the prompt to continue")
+                    st.info(f"🤐 Unable to assist with that prompt due to: {e}. Change the prompt to continue.")
                 except Exception as e:
-                    st.info(f"An unexpected error occurred 😕, Change the prompt to continue: {e}")
+                    st.info(f"An unexpected error occurred 😕. Change the prompt to continue: {e}")
 
                 report_keywords = ["report", "health", "illness", "summary", "sick"]
                 if any(keyword in question.lower() for keyword in report_keywords):
@@ -183,137 +205,212 @@ Safety and Well-being: SoulCare prioritizes the safety and well-being of its use
                         download_generated_report(response.text, "report")
         st.markdown('---')
 
-    elif page == "Report Analyzer ⚡":
-        st.title("Report Analyzer")
+    elif page == "📝 Medical Report Analysis":
+        st.header("📝 Medical Report Analysis")
+        st.markdown("Upload your medical report (PDF format):")
+        uploaded_file = st.file_uploader("Choose a PDF file", type=["pdf"])
 
-        lottie_url = "https://lottie.host/c072814c-e678-429b-983e-83d0d2f6855d/cpGp0hsXPO.json"
+        if uploaded_file is not None:
+            try:
+                text = extract_text_from_pdf(uploaded_file)
+                st.text_area("Extracted Text:", text, height=300)
 
-        # Load and display Lottie animation
-        lottie_animation = load_lottie_url(lottie_url)
-        if lottie_animation:
-            st_lottie(lottie_animation, speed=1, width=620, height=330, key="lottie_animation")
-        else:
-            st.error("Failed to load Lottie animation.")
-        uploaded_pdf = st.file_uploader("Upload your medical report (PDF)", type="pdf")
+                if st.button("Analyze Report"):
+                    with st.spinner("Analyzing report..."):
+                        try:
+                            prompt = f"Analyze the following medical report and provide insights:\n\n{text}"
+                            response = model.generate_content(prompt)
+                            if response.text:
+                                st.text("Analysis:")
+                                st.write(response.text)
+                                download_generated_report(response.text, "analysis", format="txt")
+                            else:
+                                st.error("No valid response received from the AI model.")
+                        except ValueError as e:
+                            st.error(f"Unable to analyze the report: {e}")
+                        except IndexError as e:
+                            st.error(f"Unable to analyze the report: {e}")
+                        except Exception as e:
+                            st.error(f"An unexpected error occurred while analyzing the report: {e}")
 
-        if uploaded_pdf:
-            with st.spinner("Extracting Summary of the Report ..."):
-                report_text = extract_text_from_pdf(uploaded_pdf)
+            except Exception as e:
+                st.error(f"Failed to extract text from PDF: {e}")
 
-            # Generate a summary using the model
-            response = model.generate_content(f"your are mental healthcare, General surgeon Doctor with 17+ years of experience, Provide a summary for the following medical report: {report_text}")
-            summary = response.text if response.text else "Summary could not be generated."
+    elif page == "💊 Drug Details":
+        st.header("💊 Drug Details")
+        st.markdown("Select the input method:")
 
-            # Display the summary
-            st.markdown(f"**Summary:** {summary}")
+        input_method = st.radio("Choose the input method:", ("Text Input", "PDF Upload"))
 
+        if input_method == "Text Input":
+            medicine_name = st.text_input("Enter the medicine name:")
 
-    elif page == "Know Your Medicine 🌐":
-        st.title("Know Your Medicine")
-
-        input_method = st.radio("Choose input method", ("Text", "PDF"))
-
-        if input_method == "Text":
-            medicine_name = st.text_input("Enter the medicine name")
-            if st.button("Get Information"):
-
-                lottie_url = "https://lottie.host/3c9492e6-52ef-4987-a9c4-77b2b5147d36/VCJCsVmrQO.json"
-
-                # Load and display Lottie animation
-                lottie_animation = load_lottie_url(lottie_url)
-                if lottie_animation:
-                    st_lottie(lottie_animation, speed=1, width=150, height=100, key="lottie_animation")
-                else:
-                    st.error("Failed to load Lottie animation.")
-
-                with st.spinner("Generating summary..."):
-                    response = model.generate_content(f"Provide a summary for the medicine: {medicine_name}")
-                    if response.text:
-                        st.write(response.text)
-                    else:
-                        st.error("Failed to generate summary.")
-
-        else:
-            uploaded_pdf = st.file_uploader("Upload a PDF file containing information about the medicine", type="pdf")
-            if uploaded_pdf:
-                with st.spinner("Extracting text from PDF 💀..."):
-                    medicine_text = extract_text_from_pdf(uploaded_pdf)
-                    st.write(medicine_text)
-
-                    with st.spinner("Generating summary..."):
-                        response = model.generate_content(f"Provide a summary for the following text: {medicine_text}")
+            if st.button("Analyze Medicine"):
+                with st.spinner("Analyzing medicine details..."):
+                    try:
+                        prompt = f"Provide insights on the following medicine: {medicine_name}"
+                        response = model.generate_content(prompt)
                         if response.text:
+                            st.text("Analysis:")
                             st.write(response.text)
+                            download_generated_report(response.text, "medicine_analysis", format="txt")
                         else:
-                            st.error("Failed to generate summary.")
+                            st.error("No valid response received from the AI model.")
+                    except ValueError as e:
+                        st.error(f"Unable to analyze the medicine details: {e}")
+                    except IndexError as e:
+                        st.error(f"Unable to analyze the medicine details: {e}")
+                    except Exception as e:
+                        st.error(f"An unexpected error occurred while analyzing the medicine details: {e}")
 
-    elif page == "Privacy Policy":
-        st.title("Privacy Policy")
-        st.markdown("""1. Information Collection and Use:
+        elif input_method == "PDF Upload":
+            uploaded_file = st.file_uploader("Choose a PDF file", type=["pdf"])
 
-SoulCare may collect personal information, such as name, email address, and demographic data, to provide personalized services and improve user experience.
-This information will be used for internal purposes only and will not be shared with third parties without user consent, except as required by law.
+            if uploaded_file is not None:
+                try:
+                    text = extract_text_from_pdf(uploaded_file)
+                    st.text_area("Extracted Text:", text, height=300)
 
-2. **Data Security**:
+                    if st.button("Analyze Medicine"):
+                        with st.spinner("Analyzing medicine details..."):
+                            try:
+                                prompt = f"Analyze the following medicine details and provide insights:\n\n{text}"
+                                response = model.generate_content(prompt)
+                                if response.text:
+                                    st.text("Analysis:")
+                                    st.write(response.text)
+                                    download_generated_report(response.text, "medicine_analysis", format="txt")
+                                else:
+                                    st.error("No valid response received from the AI model.")
+                            except ValueError as e:
+                                st.error(f"Unable to analyze the medicine details: {e}")
+                            except IndexError as e:
+                                st.error(f"Unable to analyze the medicine details: {e}")
+                            except Exception as e:
+                                st.error(f"An unexpected error occurred while analyzing the medicine details: {e}")
 
-SoulCare employs industry-standard security measures to protect user data from unauthorized access, alteration, disclosure, or destruction.
-Users are responsible for maintaining the confidentiality of their account credentials and should report any suspicious activity or unauthorized access to their account.
+                except Exception as e:
+                    st.error(f"Failed to extract text from PDF: {e}")
 
-3. **Cookies and Tracking**:
-
-SoulCare may use cookies and similar tracking technologies to enhance user experience and gather information about user interactions with the platform.
-Users have the option to disable cookies in their web browser settings, but this may affect certain features and functionality of the platform.
-
-4. **Third-party Links**:
-
-SoulCare may contain links to third-party websites or services for additional resources and information. These third-party sites have their own privacy policies, and SoulCare is not responsible for their practices.
-
-5. **Children's Privacy**:
-
-SoulCare is not intended for use by children under the age of 13. We do not knowingly collect personal information from children, and if we become aware of such data, we will take steps to delete it.
-
-6. **Policy Updates**:
-
-SoulCare may update its privacy policy from time to time to reflect changes in data practices or legal requirements. Users will be notified of any significant changes to the policy.
-
-""")
-        st.title("""**Terms and Conditions**
-1. **Acceptance of Terms**:
-
-By accessing or using SoulCare, you agree to comply with these terms and conditions, as well as any additional guidelines or rules provided by the platform.
-
-2. **User Conduct**:
-
-Users are responsible for their conduct within SoulCare and must not engage in any activity that violates these terms, infringes on the rights of others, or disrupts the functioning of the platform.
-
-3. **Intellectual Property**:
-
-SoulCare and its content, including text, graphics, logos, and images, are protected by intellectual property laws and belong to SKAV TECH. Users may not use, reproduce, or distribute this content without permission.
-
-4. **Limitation of Liability**:
-
-SoulCare is provided on an "as is" and "as available" basis, without warranties of any kind. SKAV TECH is not liable for any direct, indirect, incidental, or consequential damages arising from the use of SoulCare.
-
-5. **Indemnification**:
-
-Users agree to indemnify and hold harmless SKAV TECH, its affiliates, and partners from any claims, losses, or damages arising from their use of SoulCare or violation of these terms.
-
-6. **Governing Law**:
-
-These terms and conditions are governed by the laws of [Jurisdiction], and any disputes will be resolved through arbitration in accordance with those laws.
-These guidelines, privacy policy, and terms and conditions outline the expectations and responsibilities for users of the SoulCare platform. By using SoulCare, users agree to abide by these terms and contribute to a positive and supportive community environment.""")
-
-    elif page == "Contact Experts":
-        st.title("Contact Experts")
+    elif page == "🧑‍⚕️‍Expert Advice":
+        st.header("🧑‍⚕️‍Expert Advice")
         st.markdown("""
-            If you need immediate assistance, please contact a healthcare professional.
+            **Available Experts:**
 
-            - **Emergency Contact Numbers**: [Emergency Contact Numbers](https://drsafehands.com/counseling/Hyderabad)
-            
-            - **Popular Centers**: 
-              1. [Counseling Centre in Vijayawada](https://threebestrated.in/counseling-centre-in-vijayawada-ap)
-              2. [Psychology Services in Vijayawada](https://www.starofservice.in/dir/andhra-pradesh/krishna/vijayawada/psychology)
-              3. [Mental Health Counsel Online](https://www.talkspace.com/)
+            - Dr. Anjali Sharma (Psychologist)
+            - Dr. John Doe (Psychiatrist)
+            - Dr. Emily White (Mental Health Counselor)
+        """)
+
+        contact_form = """<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: black;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background-color: black;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            width: 400px;
+        }
+        h1 {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        input[type="text"],
+        input[type="email"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        textarea {
+            height: 120px;
+        }
+        button[type="submit"] {
+            background-color: #4caf50;
+            color: #ffffff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+        button[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Contact Form</h1>
+        <form action="https://formsubmit.co/skavtech.in@gmail.com" method="POST">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="text" name="name" placeholder="Your name" required>
+            <input type="email" name="email" placeholder="Your email" required>
+            <textarea name="message" placeholder="Your message" required></textarea>
+            <button type="submit">Send</button>
+        </form>
+    </div>
+</body>
+</html>
+
+        """
+        st.markdown(contact_form, unsafe_allow_html=True)
+
+    elif page == "⚖️ Privacy Policy":
+        st.header("⚖️ Privacy Policy")
+        st.markdown("""
+        **Privacy Policy of SoulCare AI**:
+
+        At SoulCare AI, we prioritize your privacy and are committed to protecting your personal information. This Privacy Policy outlines the types of information we collect, how we use and safeguard that information, and your rights regarding your data.
+
+        **Information We Collect:**
+
+        - **Personal Information:** When you register or use our services, we may collect personal information such as your name, email address, and contact details.
+        - **Usage Data:** We collect information about your interactions with our platform, including the features you use, the pages you visit, and the actions you take.
+        - **Cookies and Tracking Technologies:** We use cookies and similar tracking technologies to enhance your experience on our platform and gather information about your usage patterns.
+
+        **How We Use Your Information:**
+
+        - **To Provide Services:** We use your information to deliver our services, respond to your inquiries, and fulfill your requests.
+        - **Improvement and Personalization:** We analyze usage data to improve our platform, personalize your experience, and develop new features.
+        - **Communication:** We may use your contact information to send you updates, newsletters, and other relevant communications.
+
+        **Data Security:**
+
+        We implement industry-standard security measures to protect your data from unauthorized access, alteration, disclosure, or destruction. However, please note that no method of transmission over the internet or electronic storage is completely secure.
+
+        **Your Rights:**
+
+        - **Access and Correction:** You have the right to access and correct your personal information held by us.
+        - **Data Deletion:** You can request the deletion of your personal information from our records.
+        - **Opt-Out:** You can opt out of receiving marketing communications from us at any time.
+
+        **Contact Us:**
+
+        If you have any questions or concerns about our Privacy Policy or data practices, please contact us at [YOUR CONTACT EMAIL].
+
+        **Changes to This Privacy Policy:**
+
+        We may update this Privacy Policy from time to time to reflect changes in our practices or legal requirements. We will notify you of any significant updates.
         """)
 
 
