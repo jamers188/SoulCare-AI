@@ -6,4 +6,4 @@ google-generativeai
 google-auth
 google-ai-generativelanguage
 streamlit_lottie
-pymudpdf
+pymupdf
