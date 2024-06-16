@@ -84,11 +84,11 @@ def fetch_youtube_videos(query):
 
 # Main application
 def main():
-    st.set_page_config(page_title="Mental Health Support App", page_icon="💀", layout="wide",
+    st.set_page_config(page_title="SoulCare App", page_icon="❤️", layout="wide",
                        initial_sidebar_state="expanded")
 
     st.sidebar.image("soul.png", use_column_width=True)
-    page = st.sidebar.selectbox("::Menu::",
+    page = st.sidebar.selectbox("**MENU**",
                                 ["🏠 Home", "Mental Health Instructor ➕", "Report Analyzer ⚡", "Know Your Medicine 🌐",
                                  "Contact Experts", "Privacy Policy"])
 
