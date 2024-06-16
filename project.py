@@ -298,7 +298,7 @@ def main():
             **Available Experts:**
 
             - Dr. Anjali Sharma (Psychologist)
-            - Dr. John Doe (Psychiatrist)
+            - Dr. Sandeep (Psychiatrist)
             - Dr. Emily White (Mental Health Counselor)
         """)
 
@@ -307,11 +307,13 @@ def main():
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Form</title>
+    <title>Contact SoulCare</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
         body {
-            font-family: Arial, sans-serif;
-            background-color: black;
+            font-family: 'Roboto', sans-serif;
+            background-color: #121212;
+            color: #e0e0e0;
             margin: 0;
             padding: 0;
             display: flex;
@@ -320,53 +322,98 @@ def main():
             height: 100vh;
         }
         .container {
-            background-color: black;
+            background-color: #1e1e1e;
             border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
             padding: 40px;
             width: 400px;
+            box-sizing: border-box;
         }
         h1 {
             margin-bottom: 20px;
             text-align: center;
-            color: white;
+            color: #81c784;
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 14px;
+            color: #81c784;
         }
         input[type="text"],
         input[type="email"],
+        select,
         textarea {
             width: 100%;
             padding: 10px;
             margin-bottom: 20px;
-            border: 1px solid #ccc;
+            border: 1px solid #333;
             border-radius: 4px;
+            background-color: #2c2c2c;
+            color: #ffffff;
             box-sizing: border-box;
+        }
+        input[type="text"]::placeholder,
+        input[type="email"]::placeholder,
+        textarea::placeholder {
+            color: #888;
+        }
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        textarea:focus,
+        select:focus {
+            border-color: #81c784;
+            outline: none;
         }
         textarea {
             height: 120px;
+            resize: none;
         }
         button[type="submit"] {
-            background-color: #4caf50;
-            color: #ffffff;
+            background-color: #81c784;
+            color: #121212;
             padding: 10px 20px;
             border: none;
             border-radius: 4px;
             cursor: pointer;
             font-size: 16px;
             transition: background-color 0.3s;
+            display: block;
+            width: 100%;
         }
         button[type="submit"]:hover {
-            background-color: #45a049;
+            background-color: #66bb6a;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Contact Form</h1>
-        <form action="https://formsubmit.co/soulcare.sandeep@gmail.com" method="POST">
-            <input type="hidden" name="_captcha" value="false">
-            <input type="text" name="name" placeholder="Your name" required>
-            <input type="email" name="email" placeholder="Your email" required>
-            <textarea name="message" placeholder="Your message" required></textarea>
+        <h1>Contact SoulCare</h1>
+        <form action="https://formspree.io/f/mzbnnynk" method="POST">
+            <label>
+                Your name:
+                <input type="text" name="name" placeholder="Enter your name" required>
+            </label>
+            <label>
+                Your email:
+                <input type="email" name="email" placeholder="Enter your email" required>
+            </label>
+            <label>
+                Your message:
+                <textarea name="message" placeholder="Enter your message" required></textarea>
+            </label>
+            <label>
+                Mental health concern:
+                <select name="concern" required>
+                    <option value="" disabled selected>Select your concern</option>
+                    <option value="anxiety">Anxiety</option>
+                    <option value="depression">Depression</option>
+                    <option value="stress">Stress</option>
+                    <option value="relationship">Relationship Issues</option>
+                    <option value="other">Want to Die</option>
+                    <option value="other">Other</option>
+                </select>
+            </label>
             <button type="submit">Send</button>
         </form>
     </div>
