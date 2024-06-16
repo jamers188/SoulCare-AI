@@ -329,6 +329,7 @@ def main():
         h1 {
             margin-bottom: 20px;
             text-align: center;
+            color: white;
         }
         input[type="text"],
         input[type="email"],
@@ -371,6 +372,7 @@ def main():
     </div>
 </body>
 </html>
+
 
         """
         st.markdown(contact_form, unsafe_allow_html=True)
