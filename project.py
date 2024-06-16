@@ -292,7 +292,7 @@ def main():
                 except Exception as e:
                     st.error(f"Failed to extract text from PDF: {e}")
 
-    elif page == "🧑‍⚕️‍Expert Advice":
+    elif page == "🧑‍⚕️ Expert Advice":
         st.header("🧑‍⚕️‍Expert Advice")
         st.markdown("""
             **Available Experts:**
