@@ -49,7 +49,7 @@ Steps to install and Run Soul Care:
 Open Command Prompt and Type the followed command, Clone the Github repo into your system:
 >=> git clone https://github.com/Sandeepkasturi/SoulCare-AI.git.
 
->=> cd SoulCaret-AI
+>=> cd SoulCare-AI
 
 Now On you Directory where AutoBot AI folder is present, Make changes in the code where you find st.secrets[api_key]
 This thing is actually hides the API key from Public, you can generate your own Gemini-AI API key at Google AI Studio **https://aistudio.google.com/app/apikey** 
