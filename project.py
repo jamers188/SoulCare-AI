@@ -5,6 +5,7 @@ import os
 import requests
 from urllib.parse import urlparse
 from streamlit_lottie import st_lottie
+import streamlit.components.v1 as components
 from google.generativeai import configure, GenerativeModel
 import fitz  # PyMuPDF
 import re
