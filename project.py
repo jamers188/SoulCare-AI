@@ -91,7 +91,7 @@ def main():
     # Custom Follow Me buttons with adjustable width and clickable links using Streamlit's st.sidebar.markdown()
     page = st.sidebar.selectbox("**MENU**",
                                 ["🏠 Home", "🧠 Wellness Coach", "📝 Medical Report Analysis", "💊 Drug Details",
-                                 "🧑‍⚕️ Expert Advice", "⚖️ Privacy Policy", "Support Us 🫂"])
+                                 "🧑‍⚕️ Expert Advice", "⚖️ Privacy Policy", "🫂 Support Us"])
     st.sidebar.markdown(""" Follow me on:
     <style>
     .follow-me {
@@ -461,13 +461,7 @@ def main():
 
         We may update this Privacy Policy from time to time to reflect changes in our practices or legal requirements. We will notify you of any significant updates.
         """)
-    elif page == "Support Us 🫂":
-        st.header("Support us to grow")
-        # Animation for support page
-        lottie_animation_url = "https://assets5.lottiefiles.com/packages/lf20_UJNc2t.json"
-        lottie_animation = load_lottie_url(lottie_animation_url)
-        if lottie_animation:
-            st_lottie.st_lottie(lottie_animation, height=300)
+    elif page == "🫂 Support Us":
         st.write("For support inquiries, please contact us at skavtech.in@gmail.com")
         # Add Razorpay donation button to the sidebar
         st.sidebar.markdown("### Support Us")
